@@ -1,0 +1,12 @@
+#!/bin/bash
+
+echo "Enter the path of the folder:"
+read p
+
+file1=$p/share.py
+file2=$p/crawler
+
+
+sed -i '' "s|^FILE_PATH=.*$|FILE_PATH=\"$p\"|" $file1
+sed -i '' "s|^P=.*$|P='$p'|" $file2
+echo "Finish Setup"
