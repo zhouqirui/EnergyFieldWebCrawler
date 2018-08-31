@@ -1,6 +1,6 @@
 #!/bin/bash
 
-P='/Users/zhouqirui/Desktop/Crawler-V2'
+P='/Users/zhouqirui/Documents/Projects/Crawler-V2'
 
 echo "Running crawler............"
 python3 "$P/main.py"

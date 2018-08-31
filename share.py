@@ -3,7 +3,7 @@ Share file
 Common functions
 """
 
-FILE_PATH="/Users/zhouqirui/Desktop/Crawler-V2"
+FILE_PATH="/Users/zhouqirui/Documents/Projects/Crawler-V2"
 
 class Page_info:
     def __init__(self,link,title,body):
