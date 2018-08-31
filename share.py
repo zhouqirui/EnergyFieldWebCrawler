@@ -19,35 +19,6 @@ def open_url(link:str) -> 'urlopen object':
     webpage = urlopen(request)
     return webpage
 
-def get_all_links(link:str) -> list:
-    from lxml import html,etree
-    result = []
-    webpage = open_url(link)
-    content = html.fromstring(webpage.read())
-    for link in content.xpath('//a/@href'):
-        result.append(link)
-    return result
-
-def get_url_hostname(link:str) -> str:
-    from urllib.parse import urlparse
-    parsed = urlparse(link)
-    return parsed.hostname
-
-def get_url_path(link:str) -> str:
-    from urllib.parse import urlparse
-    parsed = urlparse(link)
-    return parsed.path
-
-def get_url_title(link:str) -> str:
-    import re
-    url = open_url(link)
-    content = str(url.read())
-    match = re.search('<title>(.*?)</title>',content)
-    if match == None:
-        return "No title"
-    title = match.group(1)
-    return title
-
 def compare_date(y,m,d) -> bool:
     """
     Return True if within 14 days
@@ -78,14 +49,12 @@ def double_check(keyword_list,title) -> bool:
         if is_in == True:
             return is_in
         is_in = True
-                # break
     return False
 
 def write_file(content) -> None:
     from datetime import date
     filename = 'Search Result on '+str(date.today())+'.txt'
     file = open(FILE_PATH + '/result/'+filename,"a")
-    # file.write("Search Result for \""+keyword+'\"\n')
     if type(content) == str:
         file.write(content)
     elif type(content) == list:
